@@ -8,15 +8,37 @@ module.exports.getArtistAlbums = async (artistId) => {
     return albumList;
 };
 
-module.exports.chooseAlbumId = (albumList) => {
+module.exports.chooseAlbum = (albumList) => {
     const albumIds = albumList.map(albumObject => albumObject.album.album_id);
     const albumId = albumIds[Math.floor(Math.random() * albumIds.length)];
     return albumId;
 };
 
-module.exports.chooseTrackId = async (albumId) => {
+module.exports.getTrackList = async (albumId) => {
     const res = await fetch(`https://api.musixmatch.com/ws/1.1/album.tracks.get?apikey=${apiKey}&album_id=${albumId}`);
     const data = await res.json();
     const trackList = data.message.body.track_list;
     return trackList;
+};
+
+module.exports.chooseTrack = (trackList) => {
+    const trackIds = trackList.map(trackObject => trackObject.track.track_id);
+    // const trackNames = trackList.map(trackObject => trackObject.track.track_name);
+    const trackId = trackIds[Math.floor(Math.random() * trackIds.length)];
+    return trackId;
+};
+
+module.exports.getSnippet = async (trackId) => {
+    const res = await fetch(`https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=${trackId}&apikey=${apiKey}`);
+    const data = await res.json();
+    const snippet = data.message.body.snippet.snippet_body;
+    return snippet;
+};
+
+module.exports.verifySnippet = (snippet) => {
+    if (!snippet || snippet[0] === undefined) {
+        return false;
+    } else {
+        return true;
+    }
 };
