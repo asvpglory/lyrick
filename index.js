@@ -1,9 +1,8 @@
 const { getArtistAlbums, chooseAlbum, getTrackList, chooseTrack, getSnippet, verifySnippet } = require('./modules');
 
 module.exports = async () => {
-    setInterval(async () => {
-        let validSnippet = false;
-        // while (!validSnippet) {
+    let validSnippet = false;
+    while (!validSnippet) {
         const albumList = await getArtistAlbums(13928405);
         const albumId = chooseAlbum(albumList);
         const trackList = await getTrackList(albumId);
@@ -13,6 +12,5 @@ module.exports = async () => {
             validSnippet = true;
             return snippet;
         }
-        // }
-    }, 2000);
+    }
 };

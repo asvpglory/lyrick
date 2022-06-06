@@ -11,9 +11,10 @@ const client = new TwitterApi({
 
 async function tweet() {
     const snippet = await lyrick();
-    console.log(snippet);
-    // const { data: createdTweet } = await client.v2.tweet(`${snippet}`);
+    // console.log(snippet);
+    // const { data: createdTweet } = await client.v2.tweet('Hello');
     // console.log('Tweet', createdTweet.id, ':', createdTweet.text);
+    return snippet;
 }
 
-await tweet();
+tweet().then((res) => console.log(res));
