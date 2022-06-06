@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fetch = require('node-fetch');
 const apiKey = process.env.MXM_API_KEY;
 
 module.exports.getArtistAlbums = async (artistId) => {

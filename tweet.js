@@ -15,5 +15,6 @@ module.exports = async (text) => {
         return createdTweet;
     } catch (e) {
         console.log(`Error. ${e}`);
+        return 'Blank';
     }
 };
