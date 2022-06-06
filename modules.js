@@ -1,5 +1,5 @@
 require('dotenv').config();
-const apiKey = process.env.API_KEY;
+const apiKey = process.env.MXM_API_KEY;
 
 module.exports.getArtistAlbums = async (artistId) => {
     const res = await fetch(`https://api.musixmatch.com/ws/1.1/artist.albums.get?apikey=${apiKey}&artist_id=${artistId}&g_album_name=1`);
