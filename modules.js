@@ -23,7 +23,6 @@ module.exports.getTrackList = async (albumId) => {
 
 module.exports.chooseTrack = (trackList) => {
     const trackIds = trackList.map(trackObject => trackObject.track.track_id);
-    // const trackNames = trackList.map(trackObject => trackObject.track.track_name);
     const trackId = trackIds[Math.floor(Math.random() * trackIds.length)];
     return trackId;
 };
