@@ -1,5 +1,6 @@
 const { TwitterApi } = require('twitter-api-v2');
 require('dotenv').config();
+const lyrick = require('./index');
 
 const client = new TwitterApi({
     appKey: process.env.TWITTER_API_KEY,
@@ -9,10 +10,10 @@ const client = new TwitterApi({
 });
 
 async function tweet() {
-    const { data: createdTweet } = await client.v2.tweet('twitter-api-v2 is awesome!', {
-        poll: { duration_minutes: 120, options: ['Absolutely', 'For sure!'] },
-    });
-    console.log('Tweet', createdTweet.id, ':', createdTweet.text);
+    const snippet = await lyrick();
+    console.log(snippet);
+    // const { data: createdTweet } = await client.v2.tweet(`${snippet}`);
+    // console.log('Tweet', createdTweet.id, ':', createdTweet.text);
 }
 
-tweet();
+await tweet();
