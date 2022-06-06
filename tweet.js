@@ -9,7 +9,11 @@ const client = new TwitterApi({
 });
 
 module.exports = async (text) => {
-    const { data: createdTweet } = await client.v2.tweet(text);
-    console.log('Tweet', createdTweet.id, ':', createdTweet.text);
-    return createdTweet;
+    try {
+        const { data: createdTweet } = await client.v2.tweet(text);
+        console.log('Tweet', createdTweet.id, ':', createdTweet.text);
+        return createdTweet;
+    } catch (e) {
+        console.log(`Error. ${e}`);
+    }
 };
