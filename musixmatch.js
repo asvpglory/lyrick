@@ -1,4 +1,4 @@
-const { getArtistAlbums, chooseAlbum, getTrackList, chooseTrack, getSnippet, verifySnippet } = require('./modules');
+const { getArtistAlbums, chooseAlbum, getTrackList, chooseTrack, getSnippet, verifySnippet } = require('./mxm-modules');
 
 module.exports = async () => {
     let validSnippet = false;
